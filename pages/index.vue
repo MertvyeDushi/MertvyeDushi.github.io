@@ -10,13 +10,7 @@
         Today I need to
       </c-title>
 
-      <c-input
-        v-model="taskTitle"
-        class="index-page__input"
-        placeholder="Add new todo..."
-        autofocus
-        @input="onInput"
-      ></c-input>
+      <c-form @add="addTask"></c-form>
 
       <congration-box class="index-page__congration"></congration-box>
     </c-surface>
@@ -24,8 +18,8 @@
 </template>
 
 <script>
+import CForm from '@/components/common/CForm'
 import CImg from '@/components/common/CImg'
-import CInput from '@/components/common/CInput'
 import CSurface from '@/components/common/CSurface'
 import CTitle from '@/components/common/CTitle'
 import CongrationBox from '@/components/congration-box/CongrationBox'
@@ -34,17 +28,11 @@ export default {
   name: 'IndexPage',
 
   components: {
+    CForm,
     CImg,
-    CInput,
     CSurface,
     CTitle,
     CongrationBox,
-  },
-
-  data () {
-    return {
-      taskTitle: '',
-    }
   },
 
   computed: {
@@ -54,8 +42,8 @@ export default {
   },
 
   methods: {
-    onInput (value) {
-      console.log(value)
+    addTask (data) {
+      console.log(data)
     },
   },
 }
@@ -84,10 +72,6 @@ export default {
     font-size: 24px;
     font-weight: 700;
     line-height: 29px;
-  }
-
-  &__input {
-    width: 317px;
   }
 
   &__congration {
