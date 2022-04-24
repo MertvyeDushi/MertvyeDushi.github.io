@@ -1,0 +1,27 @@
+@use './fonts.scss';
+@use './vars.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  color: var(--color-dipper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+}
