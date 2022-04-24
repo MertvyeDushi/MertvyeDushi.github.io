@@ -10,7 +10,12 @@
         Today I need to
       </c-title>
 
-      <c-form @add="addTask"></c-form>
+      <c-form
+        class="index-page__form"
+        @add="addTask"
+      ></c-form>
+
+      <task-list></task-list>
 
       <congration-box class="index-page__congration"></congration-box>
     </c-surface>
@@ -22,7 +27,9 @@ import CForm from '@/components/common/CForm'
 import CImg from '@/components/common/CImg'
 import CSurface from '@/components/common/CSurface'
 import CTitle from '@/components/common/CTitle'
+
 import CongrationBox from '@/components/congration-box/CongrationBox'
+import TaskList from '@/components/tasks/TaskList'
 
 export default {
   name: 'IndexPage',
@@ -33,6 +40,7 @@ export default {
     CSurface,
     CTitle,
     CongrationBox,
+    TaskList,
   },
 
   computed: {
@@ -72,6 +80,10 @@ export default {
     font-size: 24px;
     font-weight: 700;
     line-height: 29px;
+  }
+
+  &__form {
+    margin-bottom: 40px;
   }
 
   &__congration {

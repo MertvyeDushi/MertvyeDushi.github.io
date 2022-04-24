@@ -109,7 +109,7 @@ export default {
   &__btn {
     padding: 12px;
     border-radius: 8px;
-    background: var(--color-soos);
+    background-color: var(--color-soos);
     color: var(--color-wendy);
 
     opacity: 0;

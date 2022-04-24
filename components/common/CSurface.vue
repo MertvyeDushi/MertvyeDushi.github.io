@@ -16,6 +16,6 @@ export default {
     height: 719px;
     padding: 32px;
     border-radius: 24px;
-    background: var(--color-wendy);
+    background-color: var(--color-wendy);
   }
 </style>
