@@ -96,6 +96,7 @@ export default {
 
     border-radius: 2px;
     border: 1px solid var(--color-stan);
+    transition: background-color .2s ease-in-out;
   }
 
   &__icon {

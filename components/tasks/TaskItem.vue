@@ -1,5 +1,5 @@
 <template>
-  <li class="task-item">
+  <li class="task-item" :class="isDoneClass">
     <c-checkbox
       class="task-item__checkbox"
       :value="task.done"
@@ -56,6 +56,16 @@ export default {
     }
   },
 
+  computed: {
+    isDoneClass () {
+      const { done } = this.task
+
+      return [
+        done && 'task-item--done'
+      ]
+    },
+  },
+
   methods: {
     editHandler () {
       return false
@@ -74,11 +84,19 @@ export default {
 
 <style lang="scss" scoped>
 .task-item {
+  $this: &;
+
   display: flex;
   align-items: center;
 
   width: 100%;
   padding: 0 16px;
+
+  &--done {
+    #{$this}__value {
+      opacity: .5;
+    }
+  }
 
   &__checkbox {
     margin-right: 10px;
@@ -86,6 +104,7 @@ export default {
 
   &__value {
     flex-grow: 1;
+    transition: opacity .2s ease-in-out;
   }
 
   &__buttons-box {
