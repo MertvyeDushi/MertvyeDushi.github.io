@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapGetters } from 'vuex'
 import CInput from '@/components/common/CInput'
 
 export default {
@@ -41,6 +42,14 @@ export default {
   },
 
   computed: {
+    ...mapState('form', [
+      'editableTaskId',
+    ]),
+
+    ...mapGetters('tasks', [
+      'getTaskById',
+    ]),
+
     isFormDisabled () {
       const { task } = this
 
@@ -52,9 +61,27 @@ export default {
 
       return isActive ? 'c-form--active' : ''
     },
+
+    editableTask () {
+      const { editableTaskId } = this
+
+      return this.getTaskById(editableTaskId)
+    },
+  },
+
+  watch: {
+    editableTaskId (value) {
+      if (value) {
+        this.task = this.editableTask.value
+      }
+    },
   },
 
   methods: {
+    ...mapMutations('tasks', [
+      'editTask',
+    ]),
+
     submit () {
       const { isFormDisabled } = this
 
@@ -62,7 +89,11 @@ export default {
         return
       }
 
-      this.$emit('add', this.task)
+      this.editTask({
+        id: this.editableTaskId,
+        value: this.task,
+      })
+
       this.task = ''
     },
 

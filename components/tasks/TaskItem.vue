@@ -63,8 +63,13 @@ export default {
   },
 
   methods: {
-    ...mapMutations([
+    ...mapMutations('tasks', [
+      'editTask',
       'setTaskState',
+    ]),
+
+    ...mapMutations('form', [
+      'setEditableTask',
     ]),
 
     changeHandler (value) {
@@ -75,11 +80,11 @@ export default {
     },
 
     editHandler () {
-      return false
+      this.setEditableTask(this.task.id)
     },
 
     deleteHandler () {
-      return false
+      this.deleteTask(this.task.id)
     },
   },
 }

@@ -10,10 +10,7 @@
         Today I need to
       </c-title>
 
-      <c-form
-        class="index-page__form"
-        @add="addTask"
-      ></c-form>
+      <c-form class="index-page__form"></c-form>
 
       <task-list></task-list>
 
@@ -46,12 +43,6 @@ export default {
   computed: {
     todoImageLink () {
       return require('@/assets/images/todo.svg')
-    },
-  },
-
-  methods: {
-    addTask (data) {
-      console.log(data)
     },
   },
 }

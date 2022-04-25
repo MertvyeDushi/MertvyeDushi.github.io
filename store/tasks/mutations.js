@@ -3,10 +3,10 @@ export default {
     state.tasks.push(data)
   },
 
-  editTask (state, { id, data }) {
+  editTask (state, { id, value }) {
     const item = state.tasks.find(item => item.id === id)
 
-    item.value = data
+    item.value = value
   },
 
   deleteTask (state, id) {

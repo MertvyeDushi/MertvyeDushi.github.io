@@ -21,7 +21,7 @@ export default {
   },
 
   computed: {
-    ...mapState([
+    ...mapState('tasks', [
       'tasks',
     ]),
   },
