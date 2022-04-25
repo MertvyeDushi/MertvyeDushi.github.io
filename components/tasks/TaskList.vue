@@ -1,9 +1,8 @@
 <template>
   <ul class="task-list">
     <task-item
-      v-for="(item, index) in tasks"
-      :key="index"
-      v-model="item.done"
+      v-for="item in tasks"
+      :key="item.id"
       :task="item"
       class="task-list__item"
     ></task-item>
@@ -11,6 +10,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TaskItem from './TaskItem'
 
 export default {
@@ -20,27 +20,10 @@ export default {
     TaskItem,
   },
 
-  data () {
-    return {
-      tasks: [
-        {
-          value: 'do the exercises 1',
-          done: false,
-        },
-        {
-          value: 'do the exercises 2',
-          done: false,
-        },
-        {
-          value: 'do the exercises 3',
-          done: false,
-        },
-        {
-          value: 'do the exercises 4',
-          done: false,
-        },
-      ]
-    }
+  computed: {
+    ...mapState([
+      'tasks',
+    ]),
   },
 }
 </script>

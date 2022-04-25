@@ -1,0 +1,23 @@
+export default {
+  addTask (state, data) {
+    state.tasks.push(data)
+  },
+
+  editTask (state, { id, data }) {
+    const item = state.tasks.find(item => item.id === id)
+
+    item.value = data
+  },
+
+  deleteTask (state, id) {
+    const index = state.tasks.findIndex(item => item.id === id)
+
+    state.tasks.splice(index, 1)
+  },
+
+  setTaskState (state, { id, value }) {
+    const item = state.tasks.find(item => item.id === id)
+
+    item.done = value
+  },
+}

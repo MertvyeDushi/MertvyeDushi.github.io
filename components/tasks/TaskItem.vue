@@ -3,7 +3,7 @@
     <c-checkbox
       class="task-item__checkbox"
       :value="task.done"
-      @change="setTaskState"
+      @change="changeHandler"
     ></c-checkbox>
 
     <p class="task-item__value">{{ task.value }}</p>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import CCheckbox from '@/components/common/CCheckbox'
 import CImg from '@/components/common/CImg'
 
@@ -42,11 +43,6 @@ export default {
   components: {
     CCheckbox,
     CImg,
-  },
-
-  model: {
-    prop: 'task.done',
-    event: 'change',
   },
 
   props: {
@@ -67,16 +63,23 @@ export default {
   },
 
   methods: {
+    ...mapMutations([
+      'setTaskState',
+    ]),
+
+    changeHandler (value) {
+      this.setTaskState({
+        id: this.task.id,
+        value,
+      })
+    },
+
     editHandler () {
       return false
     },
 
     deleteHandler () {
       return false
-    },
-
-    setTaskState (value) {
-      this.$emit('change', value)
     },
   },
 }
