@@ -27,10 +27,23 @@ li {
   list-style: none;
 }
 
-button,
 input {
+  margin: 0;
+  padding: 0;
   border: none;
   outline: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  line-height: 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 ::-webkit-scrollbar,

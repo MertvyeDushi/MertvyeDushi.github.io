@@ -1,23 +1,22 @@
 <template>
   <ul class="task-list">
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
-    <li>TaskList</li>
+    <task-item
+      v-for="(item, index) in 5"
+      :key="index"
+      class="task-list__item"
+    ></task-item>
   </ul>
 </template>
 
 <script>
+import TaskItem from './TaskItem'
+
 export default {
   name: 'TaskList',
+
+  components: {
+    TaskItem,
+  },
 }
 </script>
 
@@ -27,5 +26,11 @@ export default {
   height: 85px;
 
   overflow-y: auto;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
   <div class="congration-box">
-    <congration-icon class="congration-box__icon"></congration-icon>
+    <c-img
+      class="congration-box__icon"
+      :src="require('@/assets/icons/congration.svg')"
+    ></c-img>
 
     <p class="congration-box__text">
       Congrat, you have no more tasks to do
@@ -9,13 +12,13 @@
 </template>
 
 <script>
-import CongrationIcon from '@/components/icons/CongrationIcon'
+import CImg from '@/components/common/CImg'
 
 export default {
   name: 'CongrationBox',
 
   components: {
-    CongrationIcon,
+    CImg,
   },
 }
 </script>
