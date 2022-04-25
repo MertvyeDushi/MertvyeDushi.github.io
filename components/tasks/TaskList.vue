@@ -1,8 +1,10 @@
 <template>
   <ul class="task-list">
     <task-item
-      v-for="(item, index) in 5"
+      v-for="(item, index) in tasks"
       :key="index"
+      v-model="item.done"
+      :task="item"
       class="task-list__item"
     ></task-item>
   </ul>
@@ -16,6 +18,29 @@ export default {
 
   components: {
     TaskItem,
+  },
+
+  data () {
+    return {
+      tasks: [
+        {
+          value: 'do the exercises 1',
+          done: false,
+        },
+        {
+          value: 'do the exercises 2',
+          done: false,
+        },
+        {
+          value: 'do the exercises 3',
+          done: false,
+        },
+        {
+          value: 'do the exercises 4',
+          done: false,
+        },
+      ]
+    }
   },
 }
 </script>

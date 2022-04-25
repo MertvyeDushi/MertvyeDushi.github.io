@@ -2,7 +2,8 @@
   <li class="task-item">
     <c-checkbox
       class="task-item__checkbox"
-      :done="task.done"
+      :value="task.done"
+      @change="setTaskState"
     ></c-checkbox>
 
     <p class="task-item__value">{{ task.value }}</p>
@@ -43,13 +44,15 @@ export default {
     CImg,
   },
 
+  model: {
+    prop: 'task.done',
+    event: 'change',
+  },
+
   props: {
     task: {
       type: Object,
-      default: () => ({
-        value: 'do the exercises',
-        done: false,
-      })
+      required: true,
     }
   },
 
@@ -61,6 +64,10 @@ export default {
     deleteHandler () {
       return false
     },
+
+    setTaskState (value) {
+      this.$emit('change', value)
+    },
   },
 }
 </script>
@@ -68,8 +75,14 @@ export default {
 <style lang="scss" scoped>
 .task-item {
   display: flex;
+  align-items: center;
+
   width: 100%;
   padding: 0 16px;
+
+  &__checkbox {
+    margin-right: 10px;
+  }
 
   &__value {
     flex-grow: 1;
@@ -80,8 +93,6 @@ export default {
   }
 
   &__button {
-    cursor: pointer;
-
     &:not(:last-child) {
       margin-right: 16px;
     }

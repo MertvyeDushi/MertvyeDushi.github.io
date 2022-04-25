@@ -20,5 +20,15 @@ export default {
 
   css: [
     '@/assets/styles/main.scss'
-  ]
+  ],
+
+  modules: [
+    '@nuxtjs/style-resources'
+  ],
+
+  styleResources: {
+    scss: [
+      '@/assets/styles/mixins.scss',
+    ]
+  },
 }
