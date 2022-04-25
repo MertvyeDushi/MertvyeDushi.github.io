@@ -64,6 +64,7 @@ export default {
 
   methods: {
     ...mapMutations('tasks', [
+      'deleteTask',
       'editTask',
       'setTaskState',
     ]),
