@@ -5,6 +5,7 @@
     @submit.prevent="submit"
   >
     <c-input
+      ref="input"
       v-model="task"
       class="c-form__input"
       placeholder="Add new todo..."
@@ -25,6 +26,7 @@
 
 <script>
 import { mapState, mapMutations, mapGetters } from 'vuex'
+import { nanoid } from 'nanoid'
 import CInput from '@/components/common/CInput'
 
 export default {
@@ -37,7 +39,7 @@ export default {
   data () {
     return {
       task: '',
-      isActive: true,
+      isActive: false,
     }
   },
 
@@ -73,32 +75,50 @@ export default {
     editableTaskId (value) {
       if (value) {
         this.task = this.editableTask.value
+        this.setActiveState()
       }
     },
   },
 
+  mounted () {
+    this.setActiveState()
+  },
+
   methods: {
     ...mapMutations('tasks', [
+      'addTask',
+      'clearEditableTaskId',
       'editTask',
     ]),
 
+    ...mapMutations('form', [
+      'clearEditableTaskId',
+    ]),
+
     submit () {
-      const { isFormDisabled } = this
+      const { isFormDisabled, editableTaskId } = this
 
       if (isFormDisabled) {
         return
       }
 
-      this.editTask({
-        id: this.editableTaskId,
-        value: this.task,
-      })
+      if (editableTaskId) {
+        this.edit()
+      } else {
+        this.add()
+      }
 
       this.task = ''
     },
 
     setActiveState () {
       this.isActive = true
+
+      const el = this.$refs.input.$el
+
+      if (el) {
+        el.focus()
+      }
     },
 
     removeActiveState () {
@@ -107,6 +127,23 @@ export default {
       if (isActive && !task) {
         this.isActive = false
       }
+    },
+
+    edit () {
+      this.editTask({
+        id: this.editableTaskId,
+        value: this.task,
+      })
+
+      this.clearEditableTaskId()
+    },
+
+    add () {
+      this.addTask({
+        id: nanoid(),
+        value: this.task,
+        done: false
+      })
     },
   },
 }

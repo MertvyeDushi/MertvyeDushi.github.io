@@ -1,5 +1,8 @@
 export default {
-  setEditableTask (state, id) {
+  setEditableTaskId (state, id) {
     state.editableTaskId = id
+  },
+  clearEditableTaskId (state) {
+    state.editableTaskId = null
   },
 }

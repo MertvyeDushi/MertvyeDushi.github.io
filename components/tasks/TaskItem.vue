@@ -70,7 +70,7 @@ export default {
     ]),
 
     ...mapMutations('form', [
-      'setEditableTask',
+      'setEditableTaskId',
     ]),
 
     changeHandler (value) {
@@ -81,7 +81,7 @@ export default {
     },
 
     editHandler () {
-      this.setEditableTask(this.task.id)
+      this.setEditableTaskId(this.task.id)
     },
 
     deleteHandler () {
