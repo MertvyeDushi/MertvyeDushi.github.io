@@ -6,8 +6,9 @@
       @change="changeHandler"
     ></c-checkbox>
 
-    <!-- Сделать обработку переполнения -->
-    <p class="task-item__value">{{ task.value }}</p>
+    <p class="task-item__value">
+      {{ task.value }}
+    </p>
 
     <div class="task-item__buttons-box">
       <button
@@ -96,7 +97,7 @@ export default {
   $this: &;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   width: 100%;
   padding: 0 16px;
@@ -112,7 +113,11 @@ export default {
   }
 
   &__value {
-    flex-grow: 1;
+    max-width: 320px;
+    margin-right: auto;
+
+    line-height: 1;
+    word-wrap: break-word;
     transition: opacity .2s ease-in-out;
   }
 

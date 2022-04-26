@@ -1,16 +1,14 @@
 export default {
-  setTasks (state, data) {
-    state.tasks = data
-  },
-
   addTask (state, data) {
     state.tasks.unshift(data)
   },
 
-  editTask (state, { id, value }) {
-    const item = state.tasks.find(item => item.id === id)
+  checkAll (state) {
+    state.tasks.forEach(item => { item.done = true })
+  },
 
-    item.value = value
+  clearComplited (state) {
+    state.tasks = state.tasks.filter(item => !item.done)
   },
 
   deleteTask (state, id) {
@@ -19,13 +17,23 @@ export default {
     state.tasks.splice(index, 1)
   },
 
-  setTaskState (state, { id, value }) {
+  editTask (state, { id, value }) {
     const item = state.tasks.find(item => item.id === id)
 
-    item.done = value
+    item.value = value
   },
 
   setActiveType (state, key) {
     state.activeType = key
+  },
+
+  setTasks (state, data) {
+    state.tasks = data
+  },
+
+  setTaskState (state, { id, value }) {
+    const item = state.tasks.find(item => item.id === id)
+
+    item.done = value
   },
 }

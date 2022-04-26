@@ -78,6 +78,8 @@ export default {
 
   methods: {
     ...mapMutations('tasks', [
+      'checkAll',
+      'clearComplited',
       'setActiveType',
     ]),
 
@@ -106,14 +108,19 @@ export default {
 
       switch (key) {
         case buttons[0].key:
+          this.checkAll()
           break;
+
         case buttons[1].key:
         case buttons[2].key:
         case buttons[3].key:
           this.setActiveType(key)
           break;
+
         case buttons[4].key:
+          this.clearComplited()
           break;
+
         default:
           break;
       }
