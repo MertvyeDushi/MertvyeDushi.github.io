@@ -52,11 +52,11 @@ export default {
   line-height: 16px;
 
   border-radius: 8px;
-  transition: color .1s ease-in, background-color .1s ease-in;
+  transition: opacity .1s ease-in;
 
   &--type-action {
     &:hover {
-      color: var(--color-mabel);
+      opacity: .5;
     }
   }
 

@@ -5,6 +5,7 @@
       :key="item.key"
     >
       <c-button
+        v-if="getVisibility(item.key)"
         class="buttons-block__item"
         :active="item.state"
         :type="item.type"
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CButton from '@/components/common/CButton'
 
 export default {
@@ -58,7 +60,45 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters('tasks', [
+      'todoProgress',
+    ]),
+
+    hasCompletedTodo () {
+      const { todoProgress } = this
+
+      return todoProgress < 100 && todoProgress > 0
+    },
+
+    allCompleted () {
+      const { todoProgress } = this
+
+      return todoProgress === 0
+    },
+  },
+
   methods: {
+    getVisibility (key) {
+      const {
+        buttons,
+        hasCompletedTodo,
+        allCompleted,
+      } = this
+
+      if (hasCompletedTodo) {
+        return true
+      }
+
+      if (!allCompleted) {
+        return key === buttons[0].key || key === buttons[1].key
+      }
+
+      if (allCompleted) {
+        return key === buttons[1].key || key === buttons[4].key
+      }
+    },
+
     onClick (key) {
       const { buttons } = this
 
