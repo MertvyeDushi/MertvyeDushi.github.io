@@ -1,6 +1,10 @@
 export default {
+  setTasks (state, data) {
+    state.tasks = data
+  },
+
   addTask (state, data) {
-    state.tasks.push(data)
+    state.tasks.unshift(data)
   },
 
   editTask (state, { id, value }) {

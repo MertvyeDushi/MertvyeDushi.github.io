@@ -6,6 +6,7 @@
       @change="changeHandler"
     ></c-checkbox>
 
+    <!-- Сделать обработку переполнения -->
     <p class="task-item__value">{{ task.value }}</p>
 
     <div class="task-item__buttons-box">
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import CCheckbox from '@/components/common/CCheckbox'
 import CImg from '@/components/common/CImg'
 
@@ -64,13 +65,15 @@ export default {
 
   methods: {
     ...mapMutations('tasks', [
-      'deleteTask',
-      'editTask',
       'setTaskState',
     ]),
 
     ...mapMutations('form', [
       'setEditableTaskId',
+    ]),
+
+    ...mapActions('tasks', [
+      'removeTask',
     ]),
 
     changeHandler (value) {
@@ -85,7 +88,7 @@ export default {
     },
 
     deleteHandler () {
-      this.deleteTask(this.task.id)
+      this.removeTask(this.task.id)
     },
   },
 }

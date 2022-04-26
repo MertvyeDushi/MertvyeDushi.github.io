@@ -14,12 +14,14 @@
 
       <task-list></task-list>
 
-      <congration-box class="index-page__congration"></congration-box>
+      <congration-box v-if="!hasTasks" class="index-page__congration"></congration-box>
     </c-surface>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import CForm from '@/components/common/CForm'
 import CImg from '@/components/common/CImg'
 import CSurface from '@/components/common/CSurface'
@@ -41,9 +43,26 @@ export default {
   },
 
   computed: {
+    ...mapGetters('tasks', [
+      'hasTasks',
+    ]),
+
     todoImageLink () {
       return require('@/assets/images/todo.svg')
     },
+  },
+  /**
+   * Для инита состояния используем хук mounted, чтобы
+   * не возникали ошибки гидрации.
+   */
+  mounted () {
+    this.clientInit()
+  },
+
+  methods: {
+    ...mapActions('tasks', [
+      'clientInit',
+    ])
   },
 }
 </script>

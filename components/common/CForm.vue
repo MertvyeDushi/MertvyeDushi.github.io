@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapGetters } from 'vuex'
+import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
 import { nanoid } from 'nanoid'
 import CInput from '@/components/common/CInput'
 
@@ -86,13 +86,16 @@ export default {
 
   methods: {
     ...mapMutations('tasks', [
-      'addTask',
       'clearEditableTaskId',
-      'editTask',
     ]),
 
     ...mapMutations('form', [
       'clearEditableTaskId',
+    ]),
+
+    ...mapActions('tasks', [
+      'editTask',
+      'setNewTask',
     ]),
 
     submit () {
@@ -139,7 +142,7 @@ export default {
     },
 
     add () {
-      this.addTask({
+      this.setNewTask({
         id: nanoid(),
         value: this.task,
         done: false
