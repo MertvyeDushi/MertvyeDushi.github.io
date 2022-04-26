@@ -11,10 +11,20 @@ export default {
     return state.tasks.filter(item => item.done).length
   },
 
-  progress (state, getters) {
+  todoCounter (state) {
+    return state.tasks.filter(item => !item.done).length
+  },
+
+  completedProgress (state, getters) {
     const completed = getters.completedCounter
     const all = state.tasks.length
 
     return completed / (all / 100)
+  },
+
+  todoProgress (state, getters) {
+    const completed = getters.completedProgress
+
+    return 100 - completed
   },
 }

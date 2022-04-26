@@ -11,7 +11,10 @@
       <slot name="label"></slot>
     </c-title>
 
-    <progress-bar :progress="progress"></progress-bar>
+    <progress-bar
+      :progress="progress"
+      :color="color"
+    ></progress-bar>
   </div>
 </template>
 
@@ -31,6 +34,10 @@ export default {
     progress: {
       type: Number,
       default: 0,
+    },
+    color: {
+      type: String,
+      default: 'soos',
     },
   },
 }

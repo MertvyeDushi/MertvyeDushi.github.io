@@ -2,7 +2,7 @@
   <div class="progress-blocks">
     <progress-block
       class="progress-blocks__item"
-      :progress="progress"
+      :progress="completedProgress"
     >
       <template #counter>
         {{ completedCounter }} tasks
@@ -10,6 +10,20 @@
 
       <template #label>
         Completed
+      </template>
+    </progress-block>
+
+    <progress-block
+      class="progress-blocks__item"
+      :progress="todoProgress"
+      color="mcgucket"
+    >
+      <template #counter>
+        {{ todoCounter }} tasks
+      </template>
+
+      <template #label>
+        To be finished
       </template>
     </progress-block>
   </div>
@@ -29,7 +43,9 @@ export default {
   computed: {
     ...mapGetters('tasks', [
       'completedCounter',
-      'progress',
+      'todoCounter',
+      'completedProgress',
+      'todoProgress',
     ]),
   },
 }

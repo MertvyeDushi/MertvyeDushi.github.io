@@ -1,5 +1,5 @@
 <template>
-  <div class="progress-bar">
+  <div class="progress-bar" :class="classes">
     <div
       class="progress-bar__hotline"
       :style="styles"
@@ -16,6 +16,10 @@ export default {
       type: Number,
       default: 0,
     },
+    color: {
+      type: String,
+      default: 'soos'
+    },
   },
 
   computed: {
@@ -24,12 +28,22 @@ export default {
 
       return { width: `${progress}%` }
     },
+
+    classes () {
+      const { color } = this
+
+      return [
+        `progress-bar--color-${color}`
+      ]
+    }
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .progress-bar {
+  $this: &;
+
   position: relative;
   width: 100%;
   height: 4px;
@@ -37,13 +51,22 @@ export default {
   border-radius: 8px;
   background-color: var(--color-pacifica);
 
+  &--color-soos {
+    #{$this}__hotline {
+      background-color: var(--color-soos);
+    }
+  }
+
+  &--color-mcgucket {
+    #{$this}__hotline {
+      background-color: var(--color-mcgucket);
+    }
+  }
+
   &__hotline {
     position: absolute;
     height: 4px;
-    width: 0%;
-
     border-radius: 8px;
-    background-color: var(--color-soos);
   }
 }
 </style>
