@@ -85,10 +85,6 @@ export default {
   },
 
   methods: {
-    ...mapMutations('tasks', [
-      'clearEditableTaskId',
-    ]),
-
     ...mapMutations('form', [
       'clearEditableTaskId',
     ]),

@@ -12,7 +12,11 @@
 
       <c-form class="index-page__form"></c-form>
 
-      <task-list></task-list>
+      <template v-if="hasTasks">
+        <task-list class="index-page__tasks"></task-list>
+
+        <progress-blocks></progress-blocks>
+      </template>
 
       <congration-box v-if="!hasTasks" class="index-page__congration"></congration-box>
     </c-surface>
@@ -28,6 +32,7 @@ import CSurface from '@/components/common/CSurface'
 import CTitle from '@/components/common/CTitle'
 
 import CongrationBox from '@/components/congration-box/CongrationBox'
+import ProgressBlocks from '@/components/progress-blocks/ProgressBlocks'
 import TaskList from '@/components/tasks/TaskList'
 
 export default {
@@ -39,6 +44,7 @@ export default {
     CSurface,
     CTitle,
     CongrationBox,
+    ProgressBlocks,
     TaskList,
   },
 
@@ -94,6 +100,10 @@ export default {
 
   &__form {
     margin-bottom: 40px;
+  }
+
+  &__tasks {
+    margin-bottom: 32px;
   }
 
   &__congration {

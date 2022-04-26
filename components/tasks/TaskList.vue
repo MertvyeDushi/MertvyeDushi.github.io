@@ -31,8 +31,7 @@ export default {
 <style lang="scss" scoped>
 .task-list {
   width: 432px;
-  height: 85px;
-
+  max-height: 85px;
   overflow-y: auto;
 
   &__item {

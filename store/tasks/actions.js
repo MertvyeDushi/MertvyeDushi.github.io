@@ -22,6 +22,11 @@ export default {
     commit('deleteTask', data)
     dispatch('updateLocalState')
   },
+
+  updateTaskState ({ commit, dispatch }, data) {
+    commit('setTaskState', data)
+    dispatch('updateLocalState')
+  },
   /**
    * Берет актуальное состояние из Стора и обновляет его в localStorage.
    * С REST Api так сделать не получилось бы: нужно было бы для каждого

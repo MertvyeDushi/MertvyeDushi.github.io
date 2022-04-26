@@ -64,20 +64,17 @@ export default {
   },
 
   methods: {
-    ...mapMutations('tasks', [
-      'setTaskState',
-    ]),
-
     ...mapMutations('form', [
       'setEditableTaskId',
     ]),
 
     ...mapActions('tasks', [
       'removeTask',
+      'updateTaskState',
     ]),
 
     changeHandler (value) {
-      this.setTaskState({
+      this.updateTaskState({
         id: this.task.id,
         value,
       })
