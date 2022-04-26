@@ -24,4 +24,8 @@ export default {
 
     item.done = value
   },
+
+  setActiveType (state, key) {
+    state.activeType = key
+  },
 }

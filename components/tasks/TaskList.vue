@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import TaskItem from './TaskItem'
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 
   computed: {
-    ...mapState('tasks', [
+    ...mapGetters('tasks', [
       'tasks',
     ]),
   },
@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .task-list {
   width: 432px;
-  max-height: 85px;
+  height: 85px;
   overflow-y: auto;
 
   &__item {

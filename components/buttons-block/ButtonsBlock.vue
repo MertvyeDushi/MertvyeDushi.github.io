@@ -7,7 +7,7 @@
       <c-button
         v-if="getVisibility(item.key)"
         class="buttons-block__item"
-        :active="item.state"
+        :active="item.key === activeKey"
         :type="item.type"
         @click="onClick(item.key)"
       >
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import CButton from '@/components/common/CButton'
 
 export default {
@@ -30,6 +30,7 @@ export default {
 
   data () {
     return {
+      activeKey: 'all',
       buttons: [
         {
           key: 'check-all',
@@ -39,17 +40,14 @@ export default {
         {
           key: 'all',
           text: 'All',
-          state: true,
         },
         {
           key: 'active',
           text: 'Active',
-          state: false,
         },
         {
           key: 'complited',
           text: 'Complited',
-          state: false,
         },
         {
           key: 'clear-complited',
@@ -79,6 +77,10 @@ export default {
   },
 
   methods: {
+    ...mapMutations('tasks', [
+      'setActiveType',
+    ]),
+
     getVisibility (key) {
       const {
         buttons,
@@ -106,10 +108,9 @@ export default {
         case buttons[0].key:
           break;
         case buttons[1].key:
-          break;
         case buttons[2].key:
-          break;
         case buttons[3].key:
+          this.setActiveType(key)
           break;
         case buttons[4].key:
           break;
@@ -117,11 +118,11 @@ export default {
           break;
       }
 
-      this.buttons.forEach(item => {
-        if (key !== buttons[0].key && key !== buttons[4].key) {
-          item.state = item.key === key
-        }
-      })
+      if (key === buttons[0].key || key === buttons[4].key) {
+        return
+      }
+
+      this.activeKey = key
     },
   },
 }

@@ -3,6 +3,20 @@ export default {
     return (id) => state.tasks.find(item => item.id === id)
   },
 
+  tasks (state) {
+    const { tasks, activeType } = state
+
+    return tasks.filter(item => {
+      if (activeType === 'all') {
+        return true
+      } else if (activeType === 'complited') {
+        return item.done
+      } else {
+        return !item.done
+      }
+    })
+  },
+
   hasTasks (state) {
     return state.tasks?.length > 0 ?? false
   },
