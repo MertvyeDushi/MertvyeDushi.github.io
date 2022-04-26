@@ -21,13 +21,19 @@ export default {
       type: Boolean,
       default: false,
     },
+    type: {
+      type: String,
+      default: 'filter',
+      validator: value => ['filter', 'action', 'undefined'].includes(value)
+    },
   },
 
   computed: {
     classes () {
-      const { active } = this
+      const { active, type } = this
 
       return [
+        `c-button--type-${type}`,
         active && 'c-button--active'
       ]
     },
@@ -46,8 +52,15 @@ export default {
   line-height: 16px;
 
   border-radius: 8px;
+  transition: color .1s ease-in, background-color .1s ease-in;
 
-  &--active {
+  &--type-action {
+    &:hover {
+      color: var(--color-mabel);
+    }
+  }
+
+  &--type-filter#{$this}--active {
     color: var(--color-wendy);
     background-color: var(--color-soos);
   }

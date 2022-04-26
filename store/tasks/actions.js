@@ -5,7 +5,9 @@ export default {
   clientInit ({ commit }) {
     const tasks = JSON.parse(localStorage.getItem('tasks'))
 
-    commit('setTasks', tasks)
+    if (tasks) {
+      commit('setTasks', tasks)
+    }
   },
 
   setNewTask ({ commit, dispatch }, data) {

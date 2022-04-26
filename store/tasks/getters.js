@@ -4,7 +4,7 @@ export default {
   },
 
   hasTasks (state) {
-    return state.tasks.length > 0
+    return state.tasks?.length > 0 ?? false
   },
 
   completedCounter (state) {
