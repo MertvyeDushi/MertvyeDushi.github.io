@@ -1,5 +1,5 @@
 # media-cube--todo
-Развернуто на: https://mertvyedushi.github.io/media-cube--todo/
+Развернуто на: 
 
 ## Yarn
 Пакетный менеджер yarn
