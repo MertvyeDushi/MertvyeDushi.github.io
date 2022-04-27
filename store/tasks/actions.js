@@ -10,6 +10,11 @@ export default {
     }
   },
 
+  updateOrder ({ commit, dispatch }, data) {
+    commit('setTasks', data)
+    dispatch('updateLocalState')
+  },
+
   setNewTask ({ commit, dispatch }, data) {
     commit('addTask', data)
     dispatch('updateLocalState')
@@ -29,12 +34,7 @@ export default {
     commit('setTaskState', data)
     dispatch('updateLocalState')
   },
-  /**
-   * Берет актуальное состояние из Стора и обновляет его в localStorage.
-   * С REST Api так сделать не получилось бы: нужно было бы для каждого
-   * метода (удаление, редактирование, добавление, получение) писать запрос.
-   * Считаю такой подход более эффективным в данном контексте.
-   */
+
   updateLocalState ({ state }) {
     localStorage.setItem('tasks', JSON.stringify(state.tasks))
   },

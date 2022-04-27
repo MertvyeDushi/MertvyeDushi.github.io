@@ -1,5 +1,7 @@
 <template>
   <li class="task-item" :class="isDoneClass">
+    <span class="task-item__handler"></span>
+
     <c-checkbox
       class="task-item__checkbox"
       :value="task.done"
@@ -96,15 +98,40 @@ export default {
 .task-item {
   $this: &;
 
+  position: relative;
   display: flex;
   align-items: flex-start;
 
   width: 100%;
-  padding: 0 16px;
+  padding: 0 16px 0 20px;
 
   &--done {
     #{$this}__value {
       opacity: .5;
+    }
+  }
+
+  &__handler {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 10px;
+    height: 13px;
+    background: url('@/assets/icons/drag.svg');
+    opacity: 0;
+    cursor: grab;
+    transition: opacity .1s ease-in-out;
+  }
+
+  &:hover {
+    #{$this}__handler {
+      opacity: .5;
+    }
+  }
+
+  &:active {
+    #{$this}__handler {
+      cursor: grabbing;
     }
   }
 
