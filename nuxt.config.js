@@ -30,4 +30,10 @@ export default {
       '@/assets/styles/mixins.scss',
     ]
   },
+
+  target: 'static',
+
+  router: {
+    base: '/media-cube--todo/',
+  },
 }
