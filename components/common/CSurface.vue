@@ -10,12 +10,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .c-surface {
-    width: 730px;
-    height: 719px;
-    padding: 32px;
-    border-radius: 24px;
-    background-color: var(--color-wendy);
-  }
+<style lang="scss">
+.c-surface {
+  width: 730px;
+  height: 719px;
+  padding: 32px;
+  border-radius: 24px;
+  background-color: var(--color-wendy);
+}
 </style>

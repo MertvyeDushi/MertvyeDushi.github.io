@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .c-input {
   width: 100%;
   padding: 11px;
