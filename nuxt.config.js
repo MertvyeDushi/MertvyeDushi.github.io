@@ -32,8 +32,4 @@ export default {
   },
 
   target: 'static',
-
-  router: {
-    base: '/media-cube--todo/',
-  },
 }

@@ -1,5 +1,5 @@
 # media-cube--todo
-Развернуто на: 
+Развернуто на: https://media-cube-todo.netlify.app/
 
 ## Yarn
 Пакетный менеджер yarn
